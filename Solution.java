@@ -5,12 +5,13 @@ public class Solution extends Relation {
 
     public int findCelebrity(int n) {
         totalPeople = n;
+        int potentialCelebrity = 0;
         for (int person = 0; person < totalPeople; person++) {
-            if (isCelebrity(person)) {
-                return person;
+            if (knows(potentialCelebrity, person)) {
+                potentialCelebrity = person;
             }
         }
-        return -1;
+        return isCelebrity(potentialCelebrity) ? potentialCelebrity : -1;
     }
 
     public boolean isCelebrity(int person) {
@@ -33,6 +34,7 @@ public class Solution extends Relation {
  * included in the code, when running the solution on the website.
 
 class Relation {
+
     boolean knows(int a, int b) {
       returns 'true', if 'a' knows 'b', otherwise returns 'false'.
     }
