@@ -25,12 +25,13 @@ var solution = function (knows) {
      */
     return function (n) {
         const totalPeople = n;
+        let potentialCelebrity = 0;
         for (let person = 0; person < totalPeople; person++) {
-            if (isCelebrity(person, totalPeople)) {
-                return person;
+            if (knows(potentialCelebrity, person)) {
+                potentialCelebrity = person;
             }
         }
-        return -1;
+        return isCelebrity(potentialCelebrity, totalPeople) ? potentialCelebrity : -1;
     };
 
     function isCelebrity(person, totalPeople) {
